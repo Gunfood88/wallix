@@ -26,7 +26,10 @@ export default function AddUser() {
     }),
   );
   const [open, setOpen] = React.useState(false);
+  const [name, setName] = React.useState('');
   const [profile, setProfile] = React.useState('');
+  const [email, setEmail] = React.useState('');
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -39,8 +42,16 @@ export default function AddUser() {
 
   const classes = useStyles();
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeProfile = (event: React.ChangeEvent<{ value: unknown }>) => {
     setProfile(event.target.value as string);
+  };
+
+  const handleChangeEmail = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setEmail(event.target.value as string);
+  };
+
+  const handleChangeName = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setName(event.target.value as string);
   };
 
   return (
@@ -52,8 +63,7 @@ export default function AddUser() {
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
+            Add User
           </DialogContentText>
           <TextField
             autoFocus
@@ -61,6 +71,16 @@ export default function AddUser() {
             id="name"
             label="Email Address"
             type="email"
+            onChange={handleChangeEmail}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Name"
+            type="text"
+            onChange={handleChangeName}
             fullWidth
           />
           <FormControl className={classes.formControl}>
@@ -69,7 +89,7 @@ export default function AddUser() {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={profile}
-              onChange={handleChange}
+              onChange={handleChangeProfile}
             >
               <MenuItem value={'Administrateur'}>Administrateur</MenuItem>
               <MenuItem value={'Auditeur'}>Auditeur</MenuItem>
