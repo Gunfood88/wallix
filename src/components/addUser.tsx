@@ -26,7 +26,7 @@ export default function AddUser() {
     }),
   );
   const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState('');
+  const [profile, setProfile] = React.useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,7 +40,7 @@ export default function AddUser() {
   const classes = useStyles();
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
+    setProfile(event.target.value as string);
   };
 
   return (
@@ -64,16 +64,16 @@ export default function AddUser() {
             fullWidth
           />
           <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <InputLabel id="demo-simple-select-label">profile</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={age}
+              value={profile}
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value={'Administrateur'}>Administrateur</MenuItem>
+              <MenuItem value={'Auditeur'}>Auditeur</MenuItem>
+              <MenuItem value={'Intégrateur'}>Intégrateur</MenuItem>
             </Select>
           </FormControl>
         </DialogContent>

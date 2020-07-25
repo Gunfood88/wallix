@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { IUsers, IUser } from '../intefaces/user.interace';
 
 const useStyles = makeStyles({
   table: {
@@ -17,24 +18,24 @@ const useStyles = makeStyles({
 const Users = (props: any) => {
   const classes = useStyles();
 
-  const users = [{ name: 'aymen', job: 'test' }]
+  const users: IUser[] = [{ name: 'aymen', email: 'aymen@gmail.com', profile: 'test' }]
 
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="caption table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="right">Job</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">Email</TableCell>
+            <TableCell align="center">Job</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {users?.map((user: any) => (
+          {users?.map((user: IUser) => (
             <TableRow key={user.name}>
-              <TableCell component="th" scope="user">
-                {user.name}
-              </TableCell>
-              <TableCell align="right">{user.job}</TableCell>
+              <TableCell align="center" component="th" scope="user">{user.name}</TableCell>
+              <TableCell align="center">{user.email}</TableCell>
+              <TableCell align="center">{user.profile}</TableCell>
             </TableRow>
           ))}
         </TableBody>
