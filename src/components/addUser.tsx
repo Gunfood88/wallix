@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -11,8 +12,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-
+import * as actions from '../store/actions'
 export default function AddUser() {
+  const dispatch = useDispatch()
+
 
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -30,6 +33,14 @@ export default function AddUser() {
   const [profile, setProfile] = React.useState('');
   const [email, setEmail] = React.useState('');
 
+
+  const saveUser = () => {
+    const newUser = { name, email, profile }
+    console.log("***", newUser)
+    dispatch(actions.addUserAction(newUser))
+    // setProfile('')
+    handleClose()
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -57,10 +68,10 @@ export default function AddUser() {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
+        Ajouter un utilisateur
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Ajout d'un user</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Add User
@@ -101,8 +112,8 @@ export default function AddUser() {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
+          <Button onClick={saveUser} color="primary" >
+            Ajouter
           </Button>
         </DialogActions>
       </Dialog>

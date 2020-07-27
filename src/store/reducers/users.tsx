@@ -6,11 +6,9 @@ import { IUsers } from '../../intefaces/user.interace'
 const initialState: IUsers = {
   users: [{
     name: "test",
-    profile: "engineer",
+    profile: "Administrateur",
     email: 'test@test.com'
   }],
-
-
 }
 
 

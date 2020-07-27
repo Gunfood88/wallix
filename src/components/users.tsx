@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -14,11 +15,12 @@ const useStyles = makeStyles({
     minWidth: 650,
   },
 });
-
-const Users = (props: any) => {
+const Users = (props: Partial<IUsers>) => {
   const classes = useStyles();
+  const { users } = useSelector((state: IUsers) => state)
 
-  const users: IUser[] = [{ name: 'aymen', email: 'aymen@gmail.com', profile: 'test' }]
+
+  // const users: IUser[] = [{ name: 'aymen', email: 'aymen@gmail.com', profile: 'test' }]
 
   return (
     <TableContainer component={Paper}>
@@ -27,7 +29,7 @@ const Users = (props: any) => {
           <TableRow>
             <TableCell align="center">Name</TableCell>
             <TableCell align="center">Email</TableCell>
-            <TableCell align="center">Job</TableCell>
+            <TableCell align="center">Profile</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
